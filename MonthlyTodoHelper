@@ -1,0 +1,37 @@
+# Monthly checklist to help you stay on your track!
+# Please note that this script only takes in consideration current month
+
+
+#!/bin/bash -i
+
+
+echo How many items have you done so far?
+read done # Input how many items are done
+
+clear
+
+
+echo You have done $done items so far.
+
+#Calculate how many items are left to be done
+
+todo=200 #Change this number to the number of items you have to do.
+todo=`expr 200 - $done`
+
+echo $todo items left to be done!
+
+#Calculate how many days are left
+
+
+daysleft=`expr 28 - $(date +'%d')`
+
+echo
+echo $daysleft Days left.
+echo Deadline is set for 28. November. #Change date to meet your current deadline
+tput setaf 3; 
+echo
+echo You need to do `expr $todo / $daysleft` items daily to meet your deadline. Good luck!
+echo
+
+/bin/bash
+
