@@ -1,9 +1,8 @@
+# Test github branch system
 # Monthly checklist to help you stay on your track!
 # Please note that this script only takes in consideration current month
 
-
 #!/bin/bash -i
-
 
 i="0"
 while [ $i -lt 4 ]
@@ -11,7 +10,7 @@ do
 
 echo How many items have you done so far?
 echo 
-read done # Input how many items are done
+read done
 
 clear
 echo ---------------------------
