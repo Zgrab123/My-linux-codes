@@ -5,11 +5,17 @@
 #!/bin/bash -i
 
 
+i="0"
+while [ $i -lt 4 ]
+do
+
 echo How many items have you done so far?
+echo 
 read done # Input how many items are done
 
 clear
-
+echo ---------------------------
+echo
 
 echo You have done $done items so far.
 
@@ -22,16 +28,36 @@ echo $todo items left to be done!
 
 #Calculate how many days are left
 
-
-daysleft=`expr 28 - $(date +'%d')`
+deadline=28
+daysleft=`expr $deadline - $(date +'%d')` #Change date to meet your current deadline
 
 echo
+echo Deadline is set for $deadline. November. #Change date to meet your current deadline
 echo $daysleft Days left.
-echo Deadline is set for 28. November. #Change date to meet your current deadline
+
 tput setaf 3; 
 echo
-echo You need to do `expr $todo / $daysleft` items daily to meet your deadline. Good luck!
-echo
+echo You need to do minimum of `expr $todo / $daysleft` items daily to meet your deadline. Good luck!
 
-/bin/bash
+tput init #vrati originalne boje
+echo If you wish to get back to easy tempo of 3 items per day
+late="$(( 200-(($deadline - $(date +'%d'))*3) ))"
+echo you would need to have $late items done already..
+echo
+echo But you have done $done items so far.
+echo That means that you miss `expr $late - $done` items.
+extra="$(( $late - $done ))"
+
+echo To catch up in ten days, you would need to do `expr $extra / 10` extra items per day.
+tput setaf 3; 
+echo Optimum total items per day would be "$(( ($extra / 10)+($todo / $daysleft) ))"
+tput init
+echo Press enter to run the script again.
+
+
+read $i
+
+clear
+
+done
 
