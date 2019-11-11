@@ -1,0 +1,3 @@
+Type in terminal:
+
+gsettings reset-recursively org.cinnamon 
